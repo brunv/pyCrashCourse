@@ -1,6 +1,7 @@
 #
 # testando condições lógicas
 #
+
 age_0 = 22
 age_1 = 18
 age_0 >= 21 and age_1 >= 15         # true
@@ -9,6 +10,7 @@ age_0 >= 21 or age_1 >= 21          # true
 #
 # verificando nulidade da lista
 #
+
 requested_toppings = []
 
 if requested_toppings:
@@ -19,6 +21,7 @@ else:
 #
 # verificando existência na lista
 #
+
 requested_toppings = ['mushrooms', 'onions', 'pineapple']
 
 'mushroom' in requested_toppings    # true
@@ -33,12 +36,14 @@ if user not in banned_users:
 #
 # expressões booleanas
 #
+
 game_active = True
 can_edit = False
 
 #
 # if-else normal com igualdade
 #
+
 cars = ['audi', 'bmw', 'subaru', 'toyota']
 
 for car in cars:
@@ -50,6 +55,7 @@ for car in cars:
 #
 # if normal com diferença
 #
+
 requested_topping = 'mushrooms'
 
 if requested_topping != 'achovies':
@@ -58,6 +64,7 @@ if requested_topping != 'achovies':
 #
 # sintexa if-elif-else
 #
+
 age = 12
 
 if age <= 4:

@@ -8,3 +8,11 @@ for value in range(1,11):
     quadrados.append(quadrado)
 
 print(quadrados)
+
+#
+# Agora, o mesmo exercício usando List Comprehensions
+#
+
+quadrados = [value**2 for value in range(1,11)]
+
+print(quadrados)
