@@ -28,3 +28,19 @@ while True:
         break
     else:
         print("I\'d love to go to " + city.title() + "!")
+
+
+#
+#       Usando continue em um laço
+#
+
+
+print("\nLet\'s see some odd numbers!\n")
+
+current_number = 0
+while current_number < 10:
+    current_number += 1
+    if current_number % 2 == 0:
+        continue
+
+    print(current_number)
