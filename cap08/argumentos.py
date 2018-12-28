@@ -4,7 +4,9 @@
 #       listas e de dicionários de valores.
 
 
+#
 #       Argumentos Posicionais:
+#
 
 def describre_pet(animal_type, pet_name, pet_age):
     """Exibe informações sobre um animal de estimação."""
@@ -14,12 +16,16 @@ def describre_pet(animal_type, pet_name, pet_age):
 describre_pet('cat', 'cristal', 6)
 
 
-#       Argumento Nomeados:
+#
+#       Argumentos Nomeados:
+#
 
 describre_pet(pet_age=8, animal_type='dog', pet_name='joe')
 
 
+#
 #       Valores default:
+#
 
 def exponencial(num, exp=2):
     """Eleva um numero dado à uma potência dada."""
@@ -30,7 +36,9 @@ exponencial(2,3)    # 8
 exponencial(2)      # 4
 
 
+#
 #       Retornando resultados:
+#
 
 def get_exponencial(num, exp):
     """Retorna um numero dado elevado à uma potência dada."""
@@ -40,7 +48,9 @@ result = get_exponencial(2,4)
 print(result)       # 16
 
 
+#
 #       Retornando um Dicionário:
+#
 
 def build_person(first_name, last_name, age=''):
     """Retorna um dicionário com informações de uma pessoa."""

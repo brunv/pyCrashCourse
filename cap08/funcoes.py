@@ -15,7 +15,9 @@ greetings()
 #       funções do programa.
 
 
-#       Passando informações para uma função
+#
+#       Passando informações para uma função:
+#
 
 def greet_user(username):
     """Exibe uma mensagem de saudação para um determinado usuário."""
