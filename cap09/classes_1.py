@@ -69,3 +69,10 @@ your_dog.roll_over()
 #       Para acessar os atributos de uma instância utilize a notação de ponto.
 #       Para chamar um método, assim como os atributos, especifique a instância
 #       e o método separados por um ponto.
+
+#       Estilização das Classes:
+#       Os nomes das classes devem ser escritos em CamelCaps. Para isso, cada
+#       palavra do nome deve ter a primeira letra maiúscula, e você não deve
+#       usar underscores.
+#       Nomes de instâncias e de módulos devem ser escritos com letras
+#       minpusculas e undercores separando as palavras.
