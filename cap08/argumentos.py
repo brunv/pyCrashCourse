@@ -1,6 +1,6 @@
 #       Podemos usar argumentos posicionais, que devem estar na mesma ordem em que os
 #       parâmetros foram escritos, argumentos nomeados (keyword arguments), em que cada
-#       argumentoé constituído de um nome de variável e de um valor, ou por meio de
+#       argumento é constituído de um nome de variável e de um valor, ou por meio de
 #       listas e de dicionários de valores.
 
 
