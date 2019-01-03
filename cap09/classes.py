@@ -53,3 +53,19 @@ class Dog():
 #       classe. Além disso, podemos acessar essas variáveis por meio de qualquer
 #       instância criada a partir da classe. Variáveis como essas, acessíveis
 #       por meio instâncias, são chamadas de atributos. 
+
+
+my_dog = Dog('willie', 8)
+your_dog = Dog('lucy', 4)
+
+print("My dog's name is " + my_dog.name.title() + ".")
+print(my_dog.name.title() + " is " + str(my_dog.age) + " years old.")
+my_dog.sit()
+
+print("My dog's name is " + your_dog.name.title() + ".")
+print(your_dog.name.title() + " is " + str(your_dog.age) + " years old.")
+your_dog.roll_over()
+
+#       Para acessar os atributos de uma instância utilize a notação de ponto.
+#       Para chamar um método, assim como os atributos, especifique a instância
+#       e o método separados por um ponto.
