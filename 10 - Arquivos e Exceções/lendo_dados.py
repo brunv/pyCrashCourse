@@ -1,4 +1,7 @@
+#
 #       Lendo dados de um arquivo:
+#
+
 #       Quando quiser trabalhar com as informações de um arquivo-texto, o primeiro
 #       passo será ler o arquivo em memória. Você pode ler todo o conteúdo de um
 #       arquivo ou pode trabalhar com uma linha de cada vez.
