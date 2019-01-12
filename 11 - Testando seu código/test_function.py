@@ -79,6 +79,14 @@ unittest.main()
 #       passaram. A segunda linha nos informa quantos testes rodaram e quanto
 #       tempo levou. O OK no final informa que todos os testes da unidade do
 #       caso de teste passaram.
+#
+#       Durante a execução de um caso de teste, Python exibe um caractere para
+#       cada teste de unidade à medida que ele termianr. Um teste que passar exibe
+#       um ponto, um teste que resulte em erro exibe E e um teste que resultar em
+#       uma asserção com falha exibe F.
+#       Se um caso de teste demorar muito para excutar por conter muitos teste de
+#       unidade, você poderá observar esses resultados para ter uma noção de
+#       quantos teste estão passando.
 
 
 #
