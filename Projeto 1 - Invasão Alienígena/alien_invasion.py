@@ -1,30 +1,31 @@
 import sys
 import pygame
 from settings import Settings
+from ship import Ship
 
 def run_game():
-	"""Inicializa o jogo e cria um objeto para a tela."""
+    """Inicializa o jogo e cria um objeto para a tela."""
 
-	#	Inicializa o jogo
+    #	Inicializa o jogo
     pygame.init()
     config = Settings()
     screen = pygame.display.set_mode((config.screen_width, config.screen_height))
     pygame.display.set_caption("Alien Invasion")
 
-	#	Cria uma espaçonave
-	ship = Ship(screen)
+    #	Cria uma espaçonave
+    ship = Ship(screen)
 
     #   Inicia o laço principal do jogo
     while True:
-		
-		# 	Observa eventos de teclado e de mouse
+
+        # 	Observa eventos de teclado e de mouse
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 sys.exit()		#	Clicar no botão de saída
-
+        
         # Redesenha a tela a cada passagem do laço
         screen.fill(config.bg_color)
-		ship.blitme()
+        ship.blitme()
 
         # Deixa a tela mais recente visível
         pygame.display.flip()
