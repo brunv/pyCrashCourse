@@ -11,6 +11,9 @@ def run_game():
     screen = pygame.display.set_mode((config.screen_width, config.screen_height))
     pygame.display.set_caption("Alien Invasion")
 
+	#	Cria uma espaçonave
+	ship = Ship(screen)
+
     #   Inicia o laço principal do jogo
     while True:
 		
@@ -21,6 +24,7 @@ def run_game():
 
         # Redesenha a tela a cada passagem do laço
         screen.fill(config.bg_color)
+		ship.blitme()
 
         # Deixa a tela mais recente visível
         pygame.display.flip()
@@ -45,3 +49,6 @@ run_game()
 # 		Para fazer nosso programa responder aos eventos, escreveremos um laço
 #		de eventos apara ouvir um evento e executar uma tarefa apropriada de
 #		acordo com o tipo de evento ocorrido utilizando event.get().
+#
+#		Desenhamos a espaçonave na tela chamando 'ship.blitme()' depois de
+#		preencher a cor de fundo; assim a espaçonave aparecerá sobre essa cor.
