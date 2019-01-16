@@ -3,10 +3,11 @@ import pygame
 class Ship():
     """Uma classe para armazenar as informações da espaçonave."""
 
-    def __init__(self, screen):
+    def __init__(self, config, screen):
         """Inicializa a espaçonave e define sua posição inicial."""
 
         self.screen = screen
+        self.config = config
 
         #   Carrega a imagem da espaçonave e obtém seu rect
         self.image = pygame.image.load('images/ship.bmp')
@@ -17,6 +18,9 @@ class Ship():
         self.ship_rect.centerx = self.screen_rect.centerx
         self.ship_rect.bottom = self.screen_rect.bottom
 
+        #   Armazena um valor decimal para o centro da espaçonave
+        self.ship_center = float(self.ship_rect.centerx)
+
         #   Flag de movimento
         self.moving_right = False
         self.moving_left = False
@@ -24,12 +28,15 @@ class Ship():
     def update(self):
         """Atualiza a posição da espaçonave de acordo com a flag de movimento."""
 
-        if self.moving_right:
+        if self.moving_right and self.ship_rect.right < self.screen_rect.right:
             #   Move a espaçonave para a direita
-            self.ship_rect.centerx += 1
-        if self.moving_left:
+            self.ship_center += self.config.ship_speed_factor
+        if self.moving_left and self.ship_rect.left > 0:
             #   Move a espaçonave para a esquerda
-            self.ship_rect.centerx -= 1
+            self.ship_center -= self.config.ship_speed_factor
+
+        #   Atualiza o objeto ship_react de acordo com self.ship_center
+        self.ship_rect.centerx = self.ship_center
 
     def blitme(self):
         """Desenha a espaçonave em sua posição atual."""
@@ -37,15 +44,16 @@ class Ship():
         self.screen.blit(self.image, self.ship_rect)
 
 
-#       O método init() de Ship aceita dois parâmetros: a referência self e screen,
-#       que é a tela em que desenharemos a espaçonave.
+#       O método init() de Ship aceita três parâmetros: a referência self; screen,
+#       que é a tela em que desenharemos a espaçonave; e config, para ter acesso
+#       às configurações da espaçonave.
 #
 #       Para carregar a imamge, chamamos image.load(). Essa função devolve uma
 #       superfície que representa a espaçonave; essa infomação é armazenada em
 #       self.imagem.
 #
 #       Depois que a imagem é caregada, usamos get_rect() para acessar o atributo
-#       'rect' da superfície. Um motiv para o Pygame ser tão eficiente é que ele
+#       'rect' da superfície. Um motivo para o Pygame ser tão eficiente é que ele
 #       permite tratar elementos do jogo como retângulo (rects), mesmo que eles não
 #       tenham exatamente o formato de um retângulo. Tratar um elemento como um
 #       retângulo é eficaz, pois os retângulos são formas geometricas simples. Essa
