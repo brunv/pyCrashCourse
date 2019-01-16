@@ -19,7 +19,9 @@ def run_game():
     while True:
 
         #   Observa eventos de teclado e de mouse
-        gf.check_events()
+        gf.check_events(ship)
+        #   Atualiza posição da nave
+        ship.update()
         #   Resenha a tela a cada passagem do laço
         gf.update_screen(config, screen, ship)
 
@@ -39,10 +41,3 @@ run_game()
 # 	    define as dimensões da janela do jogo.
 #
 #	    Chamamos display.set_caption() para dar nome à janela do jogo.
-#
-# 	    Para fazer nosso programa responder aos eventos, escreveremos um laço
-#	    de eventos apara ouvir um evento e executar uma tarefa apropriada de
-#	    acordo com o tipo de evento ocorrido utilizando event.get().
-#
-#	    Desenhamos a espaçonave na tela chamando 'ship.blitme()' depois de
-#	    preencher a cor de fundo; assim a espaçonave aparecerá sobre essa cor.

@@ -17,6 +17,20 @@ class Ship():
         self.ship_rect.centerx = self.screen_rect.centerx
         self.ship_rect.bottom = self.screen_rect.bottom
 
+        #   Flag de movimento
+        self.moving_right = False
+        self.moving_left = False
+
+    def update(self):
+        """Atualiza a posição da espaçonave de acordo com a flag de movimento."""
+
+        if self.moving_right:
+            #   Move a espaçonave para a direita
+            self.ship_rect.centerx += 1
+        if self.moving_left:
+            #   Move a espaçonave para a esquerda
+            self.ship_rect.centerx -= 1
+
     def blitme(self):
         """Desenha a espaçonave em sua posição atual."""
 
@@ -53,6 +67,11 @@ class Ship():
 #       concicidir com o atributo 'centerx' do retângulo da tela. Faça com que o
 #       valor de 'self.ship_rect.bottom' (a coordenada y da parte inferior da
 #       espaçonave) seja igual ao valor do atriuto bottom do retângulo da tela.
+#
+#       Em update() usamos dois blocos if separados em vez de utilizar um elif para
+#       permitir que o valor de ship_rect.centerx da espaçonave seja incrementado
+#       e então decrementado se as duas teclas de direção forem mantidas
+#       pressionadas. Isso resulta na espaçonave parada.
 #
 #       Definimos o método 'blitme()' que desenhará a imagem na tela na posição
 #       especificada por 'self.ship_rect'.
