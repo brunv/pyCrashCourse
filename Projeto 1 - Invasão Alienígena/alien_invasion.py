@@ -27,6 +27,11 @@ def run_game():
         ship.update()
         #   Atualiza posição dos projéteis
         bullets.update()
+        #   Livra-se dos projéteis que desaparecerem
+        for bullet in bullets.copy():
+            if bullet.bullet.rect.bottom <= 0:
+                bullets.remove(bullet)
+        print(len(bullets))
         #   Resenha a tela a cada passagem do laço
         gf.update_screen(config, screen, ship, bullets)
 
