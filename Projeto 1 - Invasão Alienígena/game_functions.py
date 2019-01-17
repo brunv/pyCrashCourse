@@ -10,10 +10,7 @@ def check_keydown_events(event, config, screen, ship, bullets):
     elif event.key == pygame.K_LEFT:
         ship.moving_left = True
     elif event.key == pygame.K_SPACE:
-        #   Cria um novo projétil e o adiciona ao grupo de projéteis
-        if len(bullets) < config.bullet_allowed:
-            new_bullet = Bullet(config, screen, ship)
-            bullets.add(new_bullet)
+        fire_bullet(config, screen, ship, bullets)
 
 
 def check_keyup_events(event, ship):
@@ -37,6 +34,26 @@ def check_events(config, screen, ship, bullets):
 
         elif event.type == pygame.KEYUP:
             check_keyup_events(event, ship)
+
+def fire_bullet(config, screen, ship, bullets):
+    """Dispara um projétil se o limite ainda não foi alcançado."""
+    
+    #   Cria um novo projétil e o adiciona ao grupo de projéteis
+    if len(bullets) < config.bullet_allowed:
+        new_bullet = Bullet(config, screen, ship)
+        bullets.add(new_bullet)
+
+def update_bullets(bullets):
+    """Atualiza a posição dos projéteis e se livra dos projéteis antigos."""
+
+    #   Atualiza posição dos projéteis
+    bullets.update()
+
+    #   Livra-se dos projéteis que desaparecerem
+    for bullet in bullets.copy():
+        if bullet.bullet_rect.bottom <= 0:
+            bullets.remove(bullet)
+    print(len(bullets))
             
 
 def update_screen(config, screen, ship, bullets):
