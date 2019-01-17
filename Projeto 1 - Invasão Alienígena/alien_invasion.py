@@ -1,4 +1,5 @@
 import pygame
+from pygame.sprite import Group
 from settings import Settings
 from ship import Ship
 import game_functions as gf
@@ -29,7 +30,7 @@ def run_game():
         bullets.update()
         #   Livra-se dos projéteis que desaparecerem
         for bullet in bullets.copy():
-            if bullet.bullet.rect.bottom <= 0:
+            if bullet.bullet_rect.bottom <= 0:
                 bullets.remove(bullet)
         print(len(bullets))
         #   Resenha a tela a cada passagem do laço

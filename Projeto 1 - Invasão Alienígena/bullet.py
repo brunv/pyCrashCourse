@@ -1,5 +1,5 @@
 import pygame
-from pygame.Sprite import Sprite
+from pygame.sprite import Sprite
 
 class Bullet(Sprite):
     """Uma classe que administra projéteis disparados pela espaçonave."""
@@ -13,12 +13,12 @@ class Bullet(Sprite):
         #   Cria um retângulo para o projétil em (0,0) e, em seguida, define a
         #   posição correta.
         self.bullet_rect = pygame.Rect(0, 0, config.bullet_width, 
-            config.bullet_heigth)
+            config.bullet_height)
         self.bullet_rect.centerx = ship.ship_rect.centerx
         self.bullet_rect.top = ship.ship_rect.top
 
         #   Armazena a posição do projétil como um valor decimal
-        self.bullet_y = float(self.bullet_rect.y)
+        self.y = float(self.bullet_rect.y)
 
         self.bullet_color = config.bullet_color
         self.bullet_speed_factor = config.bullet_speed_factor
@@ -27,9 +27,9 @@ class Bullet(Sprite):
         """Move o projétil para cima na tela."""
 
         #   Atualiza a posição decimal do projétil
-        self.bullet_y -= self.bullet_speed_factor
+        self.y -= self.bullet_speed_factor
         #   Atualiza a posição de rect
-        self.bullet_rect = self.bullet_y
+        self.bullet_rect.y = self.y
 
     def draw_bullet(self):
         """Desenha o projétil na tela."""
