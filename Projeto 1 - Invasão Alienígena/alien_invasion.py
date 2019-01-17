@@ -15,15 +15,20 @@ def run_game():
     #	Cria uma espaçonave
     ship = Ship(config, screen)
 
+    #   Cria um grupo no qual serão armazenados os projéteis
+    bullets = Group()
+
     #   Inicia o laço principal do jogo
     while True:
 
         #   Observa eventos de teclado e de mouse
-        gf.check_events(ship)
-        #   Atualiza posição da nave
+        gf.check_events(config, screen, ship, bullets)
+        #   Atualiza posição da espaçonave
         ship.update()
+        #   Atualiza posição dos projéteis
+        bullets.update()
         #   Resenha a tela a cada passagem do laço
-        gf.update_screen(config, screen, ship)
+        gf.update_screen(config, screen, ship, bullets)
 
 run_game()
 

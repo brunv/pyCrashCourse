@@ -1,13 +1,17 @@
 import sys
 import pygame
+from bullet import Bullet
 
-def check_keydown_events(event, ship):
+def check_keydown_events(event, config, screen, ship, bullets):
     """Responde a pressionamentos de tecla."""
 
     if event.key == pygame.K_RIGHT:
         ship.moving_right = True
     elif event.key == pygame.K_LEFT:
         ship.moving_left = True
+    elif event.key == pygame.K_SPACE:
+        #   Cria um novo projétil e o adiciona ao grupo de projéteis
+        new_bullets = Bullet(config, screen, ship)
 
 
 def check_keyup_events(event, ship):
@@ -19,7 +23,7 @@ def check_keyup_events(event, ship):
         ship.moving_left = False
 
 
-def check_events(ship):
+def check_events(config, screen, ship, bullets):
     """Responde a eventos de pressionamento de teclas e de mouse."""
 
     for event in pygame.event.get():
@@ -33,14 +37,20 @@ def check_events(ship):
             check_keyup_events(event, ship)
             
 
-def update_screen(config, screen, ship):
+def update_screen(config, screen, ship, bullets):
     """Atualiza as imagens na tela e altera para a nova tela."""
 
-    # Redesenha a tela a cada passagem do laço
+    #   Redesenha a tela a cada passagem do laço
     screen.fill(config.bg_color)
+    
+    #   Redesenha todos os projéteis atrás da espaçonave e dos alienígenas
+    for bullet in bullets.sprites():
+        bullet.draw_bullet()
+
+    # Redesenha a espaçonave a cada passagem do laço
     ship.blitme()
 
-    # Deixa a tela mais recente visível
+    #   Deixa a tela mais recente visível
     pygame.display.flip()
 
 
