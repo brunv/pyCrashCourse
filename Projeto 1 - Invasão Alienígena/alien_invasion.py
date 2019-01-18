@@ -18,10 +18,14 @@ def run_game():
     ship = Ship(config, screen)
 
     #   Cria um alienígena
-    alien = Alien(cofig, screen)
+    alien = Alien(config, screen)
 
-    #   Cria um grupo no qual serão armazenados os projéteis
+    #   Cria um grupo no qual serão armazenados os projéteis e aliens
     bullets = Group()
+    aliens = Group()
+
+    #   Cria a frota de alienígenas
+    gf.create_fleet(config, screen, ship, aliens)
 
     #   Inicia o laço principal do jogo
     while True:
@@ -33,7 +37,7 @@ def run_game():
         #   Atualiza a posição e deleta os projéteis
         gf.update_bullets(bullets)
         #   Resenha a tela a cada passagem do laço
-        gf.update_screen(config, screen, ship, alien, bullets)
+        gf.update_screen(config, screen, ship, aliens, bullets)
 
 run_game()
 

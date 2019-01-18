@@ -12,17 +12,17 @@ class Alien(Sprite):
         self.config = config
 
         #   Carrega a imagem do alienígena e define seu atributo rect
-        self.alien_image = pygame.image.load('images/alien.bmp')
-        self.alien_rect = self.image.get_rect()
+        self.image = pygame.image.load('images/alien.bmp')
+        self.rect = self.image.get_rect()
 
         #   Inicia cada novo alienígena próxima à parte superior esquerda da tela
-        self.alien_rect.x = self.alien_rect.width
-        self.alien_rect.y = self.alien_rect.height
+        self.rect.x = self.rect.width
+        self.rect.y = self.rect.height
 
         #   Armazena a posição exata do alienígena
-        self.x = float(self.alien_rect.x)
+        self.x = float(self.rect.x)
 
     def blitme(self):
         """Desenha o alienígena em sua posição atual."""
 
-        self.screen.blit(self.alien_image, self.alien_rect)
+        self.screen.blit(self.image, self.rect)
