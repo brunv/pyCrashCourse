@@ -89,7 +89,7 @@ def create_fleet(config, screen, ship, aliens):
             create_alien(config, screen, aliens, alien_number, row_number)
 
 
-def update_bullets(aliens, bullets):
+def update_bullets(config, screen, ship, aliens, bullets):
     """Atualiza a posição dos projéteis e se livra dos projéteis antigos."""
 
     #   Atualiza posição dos projéteis
@@ -106,6 +106,11 @@ def update_bullets(aliens, bullets):
     collisions = pygame.sprite.groupcollide(bullets, aliens, True, True)
     #   Os dois argumentos True dizem ao Pygame se os projéteis e os alienígenas
     #   que colidiram devem ser apagados.
+
+    if len(aliens) == 0:
+        #   Destrói todos os projéteis existentes e cria uma nova frota
+        bullets.empty()
+        create_fleet(config, screen, ship, aliens)
 
 
 def update_screen(config, screen, ship, aliens, bullets):
