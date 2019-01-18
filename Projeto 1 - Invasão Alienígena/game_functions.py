@@ -58,7 +58,7 @@ def update_bullets(bullets):
     #print(len(bullets))
             
 
-def update_screen(config, screen, ship, bullets):
+def update_screen(config, screen, ship, alien, bullets):
     """Atualiza as imagens na tela e altera para a nova tela."""
 
     #   Redesenha a tela a cada passagem do laço
@@ -70,6 +70,9 @@ def update_screen(config, screen, ship, bullets):
 
     # Redesenha a espaçonave a cada passagem do laço
     ship.blitme()
+
+    #   Redesenha o alienígena a cada passagem do laço
+    alien.blitme()
 
     #   Deixa a tela mais recente visível
     pygame.display.flip()
