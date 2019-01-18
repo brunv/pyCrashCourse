@@ -36,12 +36,15 @@ def run_game():
 
         #   Observa eventos de teclado e de mouse
         gf.check_events(config, screen, ship, bullets)
-        #   Atualiza posição da espaçonave
-        ship.update()
-        #   Atualiza a posição e deleta os projéteis
-        gf.update_bullets(config, screen, ship, aliens, bullets)
-        #   Atualiza a posição dos alienígenas
-        gf.update_aliens(config, stats, screen, ship, aliens, bullets)
+
+        if stats.game_active:
+            #   Atualiza posição da espaçonave
+            ship.update()
+            #   Atualiza a posição e deleta os projéteis
+            gf.update_bullets(config, screen, ship, aliens, bullets)
+            #   Atualiza a posição dos alienígenas
+            gf.update_aliens(config, stats, screen, ship, aliens, bullets)
+            
         #   Resenha a tela a cada passagem do laço
         gf.update_screen(config, screen, ship, aliens, bullets)
 

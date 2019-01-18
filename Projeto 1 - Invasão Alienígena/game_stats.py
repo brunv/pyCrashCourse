@@ -7,6 +7,9 @@ class GameStats():
         self.config = config
         self.reset_status()
 
+        #   Inicia a Invasão Alienígena em um estado ativo
+        self.game_active = True
+
     def reset_status(self):
         """Inicializa os dados estatísticos que pode mudar durante o jogo."""
 
