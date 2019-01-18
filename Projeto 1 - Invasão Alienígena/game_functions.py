@@ -101,6 +101,12 @@ def update_bullets(config, screen, ship, aliens, bullets):
             bullets.remove(bullet)
     #print(len(bullets))
 
+    check_bullet_alien_collisions(config, screen, ship, aliens, bullets)
+
+
+def check_bullet_alien_collisions(config, screen, ship, aliens, bullets):
+    """Responde a colisões entre projéteis e alienígenas."""
+
     #   Verifica se algum projétil atingiu os alienígenas
     #   Em caso afirmativo, livra-se do projétil e do alienígena
     collisions = pygame.sprite.groupcollide(bullets, aliens, True, True)
