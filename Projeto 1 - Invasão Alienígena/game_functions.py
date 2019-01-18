@@ -123,6 +123,31 @@ def update_screen(config, screen, ship, aliens, bullets):
     pygame.display.flip()
 
 
+def check_fleet_edges(config, aliens):
+    """Responde apropriadamente se algum alienígena alcançou uma borda."""
+
+    for alien in aliens.sprites():
+        if alien.check_edges():
+            change_fleet_direction(config, aliens)
+            break
+
+
+def change_fleet_direction(config, aliens):
+    """Faz toda a frota descer e mudar de direção."""
+
+    for alien in aliens.sprites():
+        alien.rect.y += config.fleet_drop_speed
+    config.fleet_direction *= -1
+
+
+def update_aliens(config, aliens):
+    """
+    Verifica se a frota está em uma das bordas e então atualiza as posições de
+    todos os alienígenas da frota.
+    """
+
+    check_fleet_edges(config, aliens)
+    aliens.update()
 
 # 	    Para fazer nosso programa responder aos eventos, escreveremos um laço
 #	    de eventos apara ouvir um evento e executar uma tarefa apropriada de

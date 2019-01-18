@@ -36,6 +36,8 @@ def run_game():
         ship.update()
         #   Atualiza a posição e deleta os projéteis
         gf.update_bullets(bullets)
+        #   Atualiza a posição dos alienígenas
+        gf.update_aliens(config, aliens)
         #   Resenha a tela a cada passagem do laço
         gf.update_screen(config, screen, ship, aliens, bullets)
 

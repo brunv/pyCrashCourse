@@ -18,3 +18,9 @@ class Settings():
         self.bullet_height = 15
         self.bullet_color = (60, 60, 60)
         self.bullet_allowed = 10
+
+        #   Configurações dos alienígenas
+        self.alien_speed_factor = 1
+        self.fleet_drop_speed = 10
+        #   fleet_direction = 1 (direita) -1 (esquerda)
+        self.fleet_direction = 1
