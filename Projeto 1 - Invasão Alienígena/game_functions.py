@@ -48,19 +48,6 @@ def fire_bullet(config, screen, ship, bullets):
         bullets.add(new_bullet)
 
 
-def update_bullets(bullets):
-    """Atualiza a posição dos projéteis e se livra dos projéteis antigos."""
-
-    #   Atualiza posição dos projéteis
-    bullets.update()
-
-    #   Livra-se dos projéteis que desaparecerem
-    for bullet in bullets.copy():
-        if bullet.bullet_rect.bottom <= 0:
-            bullets.remove(bullet)
-    #print(len(bullets))
-
-
 def get_number_aliens_x(config, alien_width):
     """Determina o número de alienígenas que cabem em uma linha."""
 
@@ -100,6 +87,25 @@ def create_fleet(config, screen, ship, aliens):
     for row_number in range(number_rows):
         for alien_number in range(number_aliens_x):
             create_alien(config, screen, aliens, alien_number, row_number)
+
+
+def update_bullets(aliens, bullets):
+    """Atualiza a posição dos projéteis e se livra dos projéteis antigos."""
+
+    #   Atualiza posição dos projéteis
+    bullets.update()
+
+    #   Livra-se dos projéteis que desaparecerem
+    for bullet in bullets.copy():
+        if bullet.rect.bottom <= 0:
+            bullets.remove(bullet)
+    #print(len(bullets))
+
+    #   Verifica se algum projétil atingiu os alienígenas
+    #   Em caso afirmativo, livra-se do projétil e do alienígena
+    collisions = pygame.sprite.groupcollide(bullets, aliens, True, True)
+    #   Os dois argumentos True dizem ao Pygame se os projéteis e os alienígenas
+    #   que colidiram devem ser apagados.
 
 
 def update_screen(config, screen, ship, aliens, bullets):
