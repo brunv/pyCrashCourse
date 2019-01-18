@@ -11,37 +11,42 @@ class Ship():
 
         #   Carrega a imagem da espaçonave e obtém seu rect
         self.image = pygame.image.load('images/ship.bmp')
-        self.ship_rect = self.image.get_rect()
+        self.rect = self.image.get_rect()
         self.screen_rect = screen.get_rect()
 
         #   Inicia cada nova espaçonave na parte inferior central da tela
-        self.ship_rect.centerx = self.screen_rect.centerx
-        self.ship_rect.bottom = self.screen_rect.bottom
+        self.rect.centerx = self.screen_rect.centerx
+        self.rect.bottom = self.screen_rect.bottom
 
         #   Armazena um valor decimal para o centro da espaçonave
-        self.ship_center = float(self.ship_rect.centerx)
+        self.ship_center = float(self.rect.centerx)
 
         #   Flag de movimento
         self.moving_right = False
         self.moving_left = False
 
+    def center_ship(self):
+        """Centraliza a espaçonave na tela."""
+
+        self.center = self.screen_rect.centerx
+
     def update(self):
         """Atualiza a posição da espaçonave de acordo com a flag de movimento."""
 
-        if self.moving_right and self.ship_rect.right < self.screen_rect.right:
+        if self.moving_right and self.rect.right < self.screen_rect.right:
             #   Move a espaçonave para a direita
             self.ship_center += self.config.ship_speed_factor
-        if self.moving_left and self.ship_rect.left > 0:
+        if self.moving_left and self.rect.left > 0:
             #   Move a espaçonave para a esquerda
             self.ship_center -= self.config.ship_speed_factor
 
         #   Atualiza o objeto ship_react de acordo com self.ship_center
-        self.ship_rect.centerx = self.ship_center
+        self.rect.centerx = self.ship_center
 
     def blitme(self):
         """Desenha a espaçonave em sua posição atual."""
 
-        self.screen.blit(self.image, self.ship_rect)
+        self.screen.blit(self.image, self.rect)
 
 
 #       O método init() de Ship aceita três parâmetros: a referência self; screen,
@@ -71,15 +76,15 @@ class Ship():
 #
 #       Para posicionar a espaço na parte inferior central da tela, iniciamente
 #       armazene o retângulo da tela em 'self.screen_rect' e, em seguida, faça o
-#       valor de 'self.ship_rect.centerx' (a coordenada x do centro da espaçonave)
+#       valor de 'self.rect.centerx' (a coordenada x do centro da espaçonave)
 #       concicidir com o atributo 'centerx' do retângulo da tela. Faça com que o
-#       valor de 'self.ship_rect.bottom' (a coordenada y da parte inferior da
+#       valor de 'self.rect.bottom' (a coordenada y da parte inferior da
 #       espaçonave) seja igual ao valor do atriuto bottom do retângulo da tela.
 #
 #       Em update() usamos dois blocos if separados em vez de utilizar um elif para
-#       permitir que o valor de ship_rect.centerx da espaçonave seja incrementado
+#       permitir que o valor de rect.centerx da espaçonave seja incrementado
 #       e então decrementado se as duas teclas de direção forem mantidas
 #       pressionadas. Isso resulta na espaçonave parada.
 #
 #       Definimos o método 'blitme()' que desenhará a imagem na tela na posição
-#       especificada por 'self.ship_rect'.
+#       especificada por 'self.rect'.

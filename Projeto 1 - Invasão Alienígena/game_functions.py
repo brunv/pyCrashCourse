@@ -1,5 +1,6 @@
 import sys
 import pygame
+from time import sleep
 from bullet import Bullet
 from alien import Alien
 
@@ -81,7 +82,7 @@ def create_fleet(config, screen, ship, aliens):
     #   Cria um alienígena e calcula o número de alienígenas em uma linha
     alien = Alien(config, screen)
     number_aliens_x = get_number_aliens_x(config, alien.rect.width)
-    number_rows = get_number_rows(config, ship.ship_rect.height, alien.rect.height)
+    number_rows = get_number_rows(config, ship.rect.height, alien.rect.height)
 
     #   Cria a primeira linha de alienígenas
     for row_number in range(number_rows):
@@ -157,7 +158,19 @@ def change_fleet_direction(config, aliens):
     config.fleet_direction *= -1
 
 
-def update_aliens(config, aliens):
+def check_aliens_bottom(config, stats, screen, ship, aliens, bullets):
+    """Verifica se algum alienígena alcançou a parte inferior da tela."""
+
+    screen_rect = screen.get_rect()
+    for alien in aliens.sprites():
+        if alien.rect.bottom >= screen_rect.bottom:
+            #   Trata esse caso do mesmo modo que é feito quando a espaçonave
+            #   é atingida.
+            ship_hit(config, stats, screen, ship, aliens, bullets)
+            break
+
+
+def update_aliens(config, stats, screen, ship, aliens, bullets):
     """
     Verifica se a frota está em uma das bordas e então atualiza as posições de
     todos os alienígenas da frota.
@@ -165,6 +178,32 @@ def update_aliens(config, aliens):
 
     check_fleet_edges(config, aliens)
     aliens.update()
+
+    #   Verifica se houve colisões entre alienígenas e a espaçonave
+    if pygame.sprite.spritecollideany(ship, aliens):
+        ship_hit(config, stats, screen, ship, aliens, bullets)
+        print("Ship hit!!!")
+
+    #   Verifica se há algum alienígenaque atingiu a parte inferior da tela
+    check_aliens_bottom(config, stats, screen, ship, aliens, bullets)
+
+
+def ship_hit(config, stats, screen, ship, aliens, bullets):
+    """Responde ao fato de a espaçonave ter sido atingida por um alienígena."""
+
+    #   Decrementa ships_left
+    stats.ships_left -= 1
+
+    #   Esvazia a lista de alienígenas e de projéteis
+    aliens.empty()
+    bullets.empty()
+
+    #   Cria uma nova frota e centraliza a espaçonave
+    create_fleet(config, screen, ship, aliens)
+    ship.center_ship()
+
+    #   Faz uma pausa
+    sleep(1)
 
 # 	    Para fazer nosso programa responder aos eventos, escreveremos um laço
 #	    de eventos apara ouvir um evento e executar uma tarefa apropriada de
