@@ -5,6 +5,7 @@ from game_stats import GameStats
 from ship import Ship
 from alien import Alien
 from button import Button
+from scoreboard import Scoreboard
 import game_functions as gf
 
 def run_game():
@@ -21,6 +22,9 @@ def run_game():
 
     #   Cria uma instância para armazenar dados estatísticos do jogo
     stats = GameStats(config)
+
+    #   Cria uma instância para armazenar o placar
+    sb = Scoreboard(config, screen, stats)
 
     #	Cria uma espaçonave
     ship = Ship(config, screen)
@@ -50,7 +54,8 @@ def run_game():
             gf.update_aliens(config, stats, screen, ship, aliens, bullets)
 
         #   Resenha a tela a cada passagem do laço
-        gf.update_screen(config, screen, stats, ship, aliens, bullets, play_button)
+        gf.update_screen(config, screen, stats, sb, ship, aliens, bullets,
+             play_button)
 
 run_game()
 

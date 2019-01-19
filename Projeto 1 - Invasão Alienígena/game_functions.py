@@ -52,7 +52,7 @@ def check_play_button(config, screen, stats, play_button, ship, aliens, bullets,
     if button_clicked and not stats.game_active:
         #   Reinicia as configurações do jogo
         config.initialize_dynamic_settings()
-        
+
         #   Oculta o cursos do mouse
         pygame.mouse.set_visible(False)
 
@@ -150,7 +150,7 @@ def check_bullet_alien_collisions(config, screen, ship, aliens, bullets):
         create_fleet(config, screen, ship, aliens)
 
 
-def update_screen(config, screen, stats, ship, aliens, bullets, play_button):
+def update_screen(config, screen, stats, sb, ship, aliens, bullets, play_button):
     """Atualiza as imagens na tela e altera para a nova tela."""
 
     #   Redesenha a tela a cada passagem do laço
@@ -166,6 +166,9 @@ def update_screen(config, screen, stats, ship, aliens, bullets, play_button):
 
     #   Redesenha o alienígena a cada passagem do laço
     #alien.blitme()
+
+    #   Desenha informação sobre a pontuação
+    sb.show_score()
 
     #   Desenha o botão Play se o jogo estiver inativo
     if not stats.game_active:
