@@ -148,6 +148,7 @@ def check_bullet_alien_collisions(config, screen, stats, sb, ship, aliens,
         for aliens in collisions.values():
             stats.score += config.alien_points * len(aliens)
             sb.prep_score()
+        check_high_score(stats, sb)
 
     if len(aliens) == 0:
         #   Destrói todos os projéteis existentes e cria uma nova frota
@@ -252,6 +253,14 @@ def ship_hit(config, stats, screen, ship, aliens, bullets):
     else:
         stats.game_active = False
         pygame.mouse.set_visible(True)
+
+    
+def check_high_score(stats, sb):
+    """Verifica se há uma nova pontuação máxima."""
+
+    if stats.score > stats.high_score:
+        stats.high_score = stats.score
+        sb.prep_high_score()
 
 
 # 	    Para fazer nosso programa responder aos eventos, escreveremos um laço
