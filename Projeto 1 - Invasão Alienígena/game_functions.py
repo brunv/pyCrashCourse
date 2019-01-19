@@ -50,6 +50,9 @@ def check_play_button(config, screen, stats, play_button, ship, aliens, bullets,
 
     button_clicked = play_button.rect.collidepoint(mouse_x, mouse_y)
     if button_clicked and not stats.game_active:
+        #   Reinicia as configurações do jogo
+        config.initialize_dynamic_settings()
+        
         #   Oculta o cursos do mouse
         pygame.mouse.set_visible(False)
 
@@ -143,6 +146,7 @@ def check_bullet_alien_collisions(config, screen, ship, aliens, bullets):
     if len(aliens) == 0:
         #   Destrói todos os projéteis existentes e cria uma nova frota
         bullets.empty()
+        config.increase_speed()
         create_fleet(config, screen, ship, aliens)
 
 
