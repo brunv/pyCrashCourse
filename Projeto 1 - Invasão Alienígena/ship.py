@@ -1,11 +1,14 @@
 import pygame
+from pygame.sprite import Sprite
 
-class Ship():
+class Ship(Sprite):
     """Uma classe para armazenar as informações da espaçonave."""
 
     def __init__(self, config, screen):
         """Inicializa a espaçonave e define sua posição inicial."""
 
+        super(Ship, self).__init__()
+        
         self.screen = screen
         self.config = config
 
