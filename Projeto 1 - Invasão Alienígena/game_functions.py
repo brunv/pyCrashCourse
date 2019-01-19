@@ -120,7 +120,7 @@ def check_bullet_alien_collisions(config, screen, ship, aliens, bullets):
         create_fleet(config, screen, ship, aliens)
 
 
-def update_screen(config, screen, ship, aliens, bullets):
+def update_screen(config, screen, stats, ship, aliens, bullets, play_button):
     """Atualiza as imagens na tela e altera para a nova tela."""
 
     #   Redesenha a tela a cada passagem do laço
@@ -137,6 +137,10 @@ def update_screen(config, screen, ship, aliens, bullets):
     #   Redesenha o alienígena a cada passagem do laço
     #alien.blitme()
 
+    #   Desenha o botão Play se o jogo estiver inativo
+    if not stats.game_active:
+        play_button.draw_button()
+        
     #   Deixa a tela mais recente visível
     pygame.display.flip()
 

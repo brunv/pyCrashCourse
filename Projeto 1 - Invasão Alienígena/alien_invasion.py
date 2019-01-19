@@ -15,6 +15,9 @@ def run_game():
     screen = pygame.display.set_mode((config.screen_width, config.screen_height))
     pygame.display.set_caption("Alien Invasion")
 
+    #   Cria o botão Play
+    play_button = Button(config, screen, "Play")
+
     #   Cria uma instância para armazenar dados estatísticos do jogo
     stats = GameStats(config)
 
@@ -44,9 +47,9 @@ def run_game():
             gf.update_bullets(config, screen, ship, aliens, bullets)
             #   Atualiza a posição dos alienígenas
             gf.update_aliens(config, stats, screen, ship, aliens, bullets)
-            
+
         #   Resenha a tela a cada passagem do laço
-        gf.update_screen(config, screen, ship, aliens, bullets)
+        gf.update_screen(config, screen, stats, ship, aliens, bullets, play_button)
 
 run_game()
 
