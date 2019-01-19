@@ -26,7 +26,7 @@ def check_keyup_events(event, ship):
         ship.moving_left = False
 
 
-def check_events(config, screen, ship, bullets):
+def check_events(config, screen, stats, play_button, ship, aliens, bullets):
     """Responde a eventos de pressionamento de teclas e de mouse."""
 
     for event in pygame.event.get():
@@ -38,6 +38,29 @@ def check_events(config, screen, ship, bullets):
 
         elif event.type == pygame.KEYUP:
             check_keyup_events(event, ship)
+        elif event.type == pygame.MOUSEBUTTONDOWN:
+            mouse_x, mouse_y = pygame.mouse.get_pos()
+            check_play_button(config, screen, stats, play_button, ship, aliens, 
+                bullets, mouse_x, mouse_y)
+
+
+def check_play_button(config, screen, stats, play_button, ship, aliens, bullets,
+    mouse_x, mouse_y):
+    """Inicia um novo jogo quando o jogador clicar em Play."""
+
+    button_clicked = play_button.rect.collidepoint(mouse_x, mouse_y)
+    if button_clicked and not stats.game_active:
+        #   Reinicia os dados estatísticos do jogo:
+        stats.reset_stats()
+        stats.game_active = True
+
+        #   Esvazia a lista de alienígenas e de projéteis
+        aliens.empty()
+        bullets.empty()
+
+        #   Cria uma nova frota e centraliza a espaçonave
+        create_fleet(config, screen, ship, aliens)
+        ship.center_ship()
 
 
 def fire_bullet(config, screen, ship, bullets):
@@ -140,7 +163,7 @@ def update_screen(config, screen, stats, ship, aliens, bullets, play_button):
     #   Desenha o botão Play se o jogo estiver inativo
     if not stats.game_active:
         play_button.draw_button()
-        
+
     #   Deixa a tela mais recente visível
     pygame.display.flip()
 

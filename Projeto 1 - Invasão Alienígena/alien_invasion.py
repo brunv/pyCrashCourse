@@ -4,6 +4,7 @@ from settings import Settings
 from game_stats import GameStats
 from ship import Ship
 from alien import Alien
+from button import Button
 import game_functions as gf
 
 def run_game():
@@ -38,7 +39,7 @@ def run_game():
     while True:
 
         #   Observa eventos de teclado e de mouse
-        gf.check_events(config, screen, ship, bullets)
+        gf.check_events(config, screen, stats, play_button, ship, aliens, bullets)
 
         if stats.game_active:
             #   Atualiza posição da espaçonave

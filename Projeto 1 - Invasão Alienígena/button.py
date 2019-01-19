@@ -16,7 +16,7 @@ class Button():
         self.font = pygame.font.SysFont(None, 48)
 
         #   Constrói o objeto rect do botão e o centraliza
-        self.rect = pygame.Rect(0, 0, self.width, self,height)
+        self.rect = pygame.Rect(0, 0, self.width, self.height)
         self.rect.center = self.screen_rect.center
 
         #   A mensagem do botão deve ser preparada apenas uma vez
@@ -30,7 +30,7 @@ class Button():
         self.msg_image = self.font.render(msg, True, self.text_color, 
             self.button_color)
         self.msg_image_rect = self.msg_image.get_rect()
-        self.msg_image_rect.cernter = self.rect.center
+        self.msg_image_rect.center = self.rect.center
 
     def draw_button(self):
         """Desenha um botão em branco e, em seguida, desenha a mensagem."""
