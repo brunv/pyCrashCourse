@@ -50,6 +50,9 @@ def check_play_button(config, screen, stats, play_button, ship, aliens, bullets,
 
     button_clicked = play_button.rect.collidepoint(mouse_x, mouse_y)
     if button_clicked and not stats.game_active:
+        #   Oculta o cursos do mouse
+        pygame.mouse.set_visible(False)
+
         #   Reinicia os dados estatísticos do jogo:
         stats.reset_stats()
         stats.game_active = True
@@ -235,6 +238,7 @@ def ship_hit(config, stats, screen, ship, aliens, bullets):
     
     else:
         stats.game_active = False
+        pygame.mouse.set_visible(True)
 
 
 # 	    Para fazer nosso programa responder aos eventos, escreveremos um laço
