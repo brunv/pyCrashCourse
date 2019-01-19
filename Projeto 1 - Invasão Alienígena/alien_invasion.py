@@ -43,7 +43,8 @@ def run_game():
     while True:
 
         #   Observa eventos de teclado e de mouse
-        gf.check_events(config, screen, stats, play_button, ship, aliens, bullets)
+        gf.check_events(config, screen, stats, sb, play_button, ship, aliens,
+             bullets)
 
         if stats.game_active:
             #   Atualiza posição da espaçonave
