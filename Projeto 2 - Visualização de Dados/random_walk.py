@@ -37,7 +37,7 @@ class RandomWalk():
             y_step = y_direction * y_distance
 
             #   Rejeita movimentos que não vão a lugar nenhum
-            if x_step == 0 && y_step == 0:
+            if x_step == 0 and y_step == 0:
                 continue
             
             #   Calcula os próximos valores de x e y
