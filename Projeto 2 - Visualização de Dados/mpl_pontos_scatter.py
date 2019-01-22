@@ -23,7 +23,7 @@ plt.tick_params(axis='both', which='major', labelsize=8)
 
 #   Salvando o gráfico automaticamente
 #   O segundo argumento remove espaços em branco extras ao redor do gráfico
-#plt.savefig('squares_plot.png', bbox_inches='tight')
+#plt.savefig('graphs/squares_plot.png', bbox_inches='tight')
 
 plt.show()
 
