@@ -4,7 +4,7 @@ class Die():
     """Uma classe que representa um único dado."""
 
     def __init__(self, num_sides=6):
-        """Supôe que o seja um dado de seis lados."""
+        """Supõe que o seja um dado de seis lados."""
 
         self.num_sides = num_sides
 
