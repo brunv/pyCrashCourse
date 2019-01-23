@@ -1,3 +1,7 @@
+#
+#       Plotando os pontos de Random Walk
+#
+
 import matplotlib.pyplot as plt
 
 from random_walk import RandomWalk
