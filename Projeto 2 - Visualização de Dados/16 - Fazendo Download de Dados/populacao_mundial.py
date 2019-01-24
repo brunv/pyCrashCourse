@@ -3,6 +3,7 @@
 #
 
 import json
+from country_codes import get_country_code
 
 #   Carrega dados em uma lista
 filename = 'data/population_data.json'
@@ -14,7 +15,12 @@ for pop_dict in pop_data:
     if pop_dict['Year'] == '2010':
         country_name = pop_dict['Country Name']
         population = int(float(pop_dict['Value']))
-        #print(country_name + ": " + str(population))
+        code = get_country_code(country_name)
+
+        if code:
+            print(code + ": " + str(population))
+        else:
+            print("ERROR: " + country_name)
 
 
 
@@ -30,3 +36,14 @@ for pop_dict in pop_data:
 #       os países devem ser fornecido na forma de códigos e as populações como
 #       valores. Os códigos incluídos em 'population_data.json' são códigos de
 #       três letras, mas o Pygal utiliza códigos de duas letras.
+#
+#       Os códigos dos países no Pygal estão armazenados em um módulo chamado
+#       'i18n', que é uma abreviatura para internationalization. O dicionário
+#       COUNTRIES contém os códigos de duas letras dos países como chaves e os
+#       nomes dos países como valores.
+#
+#       Os erros em relação aos nomes e códigos de países têm duas origens. Em 
+#       primeiro lugar, nem todas as classificações no conjunto de dados são
+#       países; algumas estatísticas de população são para regiões e grupos
+#       econômicos. Em segundo lugar, algumas das estatísticas usam um sistema
+#       diferente para nomes completos de países.
