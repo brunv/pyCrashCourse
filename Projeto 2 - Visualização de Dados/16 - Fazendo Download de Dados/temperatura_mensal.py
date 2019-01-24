@@ -3,6 +3,7 @@
 #
 
 import csv
+from datetime import datetime
 from matplotlib import pyplot as plt
 
 filename = 'Data/sitka_weather_07-2014.csv'
@@ -15,24 +16,27 @@ with open(filename) as f:
     #for index, column_header in enumerate(header_row):
     #    print(index, column_header)
 
-    #   Obtém as temperaturas máximas do arquivo:
-    highs = []
+    #   Obtém as datas e as temperaturas máximas do arquivo:
+    dates, highs = [], []
     for row in reader:
+        current_date = datetime.strptime(row[0], "%Y-%m-%d")
+        dates.append(current_date)
+
         high = int(row[1])
         highs.append(high)
 
     #   Plota os dados
     fig = plt.figure(figsize=(10,8))
-    plt.plot(highs, c='red')
+    plt.plot(dates, highs, c='red')
 
     #   Formata o gráfico
     plt.title("Daily temperatures, July 2014", fontsize=18)
     plt.xlabel('', fontsize=10)
+    fig.autofmt_xdate()
     plt.ylabel('Temperature (F)', fontsize=10)
     plt.tick_params(axis='both', which='major', labelsize=14)
 
     plt.show()
-
 
 
 #       O módulo 'csv' contém a função 'next()' que devolve a próxima linha do
@@ -45,4 +49,7 @@ with open(filename) as f:
 #       Usamos 'enumerate()' na lista para obter o índice de cada item, assim como
 #       o valor.
 #
-#       
+#       Convertemos os dados que contêm as informações de data (row[0]) em um
+#       objeto 'datetime' e o concatenamos em 'dates'. A chamada 
+#       'fig.autofmt_xdate()' desenha os rótulos com as datas na diagonal para
+#       evitar que se sobreponham.
