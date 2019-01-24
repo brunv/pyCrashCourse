@@ -30,7 +30,7 @@ with open(filename) as f:
     plt.plot(dates, highs, c='red')
 
     #   Formata o gráfico
-    plt.title("Daily temperatures, July 2014", fontsize=18)
+    plt.title("Daily high temperatures, July 2014", fontsize=18)
     plt.xlabel('', fontsize=10)
     fig.autofmt_xdate()
     plt.ylabel('Temperature (F)', fontsize=10)
