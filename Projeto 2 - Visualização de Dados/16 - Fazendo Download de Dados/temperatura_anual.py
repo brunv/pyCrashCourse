@@ -6,7 +6,7 @@ import csv
 from datetime import datetime
 from matplotlib import pyplot as plt
 
-filename = 'Data/sitka_weather_2014.csv'
+filename = 'data/sitka_weather_2014.csv'
 
 with open(filename) as f:
     reader = csv.reader(f)
