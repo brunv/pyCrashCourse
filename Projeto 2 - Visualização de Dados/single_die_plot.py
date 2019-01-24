@@ -30,7 +30,7 @@ hist.x_title = "Result"
 hist.Y_title = "Frequency of Result"
 
 hist.add('D6', frequencies)
-hist.render_to_file('graphs/single_die_plot.svg')
+hist.render_to_file('charts/single_die_plot.svg')
 
 #print(results)
 print(frequencies)
