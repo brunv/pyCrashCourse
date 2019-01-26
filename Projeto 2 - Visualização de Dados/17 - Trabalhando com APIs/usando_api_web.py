@@ -50,6 +50,13 @@
 #       "python -m pip install --user requests"
 #       O pacote 'requests' permite que um programa Python solicite informações a
 #       um site e analise a resposta devolvida.
+#
+#       Monitorando os limites da taxa de uso da API:
+#       A maioria das APIs tem uma taxa de uso limitada, o que significa que há um
+#       limite para quantas requisições podemos fazer em determinado perído de
+#       tempo. Para ver os limites da API do GitHub, acesse:
+#       'http://api.github.com/rate_limit'. É importante lembrar que muitas APIs
+#       exigem que você se registre e obtenha uma chave para fazer chamadas de API.
 
 
 import requests
@@ -75,12 +82,10 @@ for repo_dict in repo_dicts:
     print('Repositoty:', repo_dict['html_url'])
     print('Description:', repo_dict['description'])
 
-
 #   Analisa o primeiro repositório e exibe todas as suas chaves
 # print("\nKeys:", len(repo_dict))
 # for key in sorted(repo_dict.keys()):
 #     print(key)
-
 
 
 #       Chamamos 'get()', passamos o URL e armazenamos o objeto com a resposta na
