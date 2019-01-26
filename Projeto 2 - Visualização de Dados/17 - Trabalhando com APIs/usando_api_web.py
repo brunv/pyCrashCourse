@@ -61,7 +61,7 @@
 
 import requests
 import pygal
-#from pygal.style import LightColorizedStyle as LCS, LightenStyle as LS
+from pygal.style import LightColorizedStyle as LCS, LightenStyle as LS
 
 #   Faz uma chamada de API e armazena a resposta
 url = 'https://api.github.com/search/repositories?q=language:python&sort=stars'
@@ -81,14 +81,25 @@ for repo_dict in repo_dicts:
     stars.append(repo_dict['stargazers_count'])
 
 #   Cria visualização
-# my_style = LS('#333366', base_style=LCS)
-# chart = pygal.Bar(style=my_style, x_label_rotation=45, show_legend=False)
-chart = pygal.Bar( x_label_rotation=45, show_legend=False)
+my_style = LS('#333366', base_style=LCS)
+my_style.title_font_size = 18
+my_style.label_font_size = 10
+my_style.major_label_font_size = 14
+
+my_config = pygal.Config()
+my_config.x_label_rotation = 45
+my_config.show_legend = False
+my_config.truncate_label = 15
+my_config.show_y_guides = False
+my_config.width = 1000
+
+chart = pygal.Bar(my_config, style=my_style)
 chart.title = 'Most-Starred Python Projects on GitHub'
 chart.x_labels = names
 
 chart.add('test', stars)
 chart.render_to_file('python_repos.svg')
+
 
 #   Analisa o primeiro repositório e exibe todas as suas chaves
 # print("\nKeys:", len(repo_dict))
