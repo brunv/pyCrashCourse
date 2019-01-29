@@ -93,3 +93,18 @@ O comando **startapp nomeapp** diz a Django para criar a infraestrutura necessá
 Um modelo diz a Django como trabalhar com os dados que serão armazenados na aplicação. Do ponto de vista do código, um modelo é apenas uma classe; ele tem atributos métodos, assim como todas as classes que discutimos.
 
 Para ver os diferentes tipos de campos que você pode usar em um modelo, consulte o Django Model Field Reference.
+
+#### Ativando os modelos
+Para usar nossos modelos, devemos dizer a Django para incluir nossa aplicação no projeto como um todo. Abra *settings.py* e você verá uma seção INSTALLED_APPS que informa a Django quais aplicações estão instaladas no projeto.
+
+Em seguida, devemos dizer a Django para modificar o banco de dados para que ele possa armazenar informações relacionadas ao modelo **Topic**:
+```
+$ python manage.py makemigrations learning_logs
+```
+
+O comando **makemigrations** diz a Django para descobrir como modificar o bando de dados para que ele possa armazenar os dados associados a qualquer novo modelo que definirmos. A saída nesse caso, provavelmente, mostrará que Django criou um arquivo de migração chamado 0001_initial.py. Essa migração criará uma tabela para o modelo **Topic** no banco de dados. Assim, podemos fazer essa migração:
+```
+$ python manage.py migrate
+```
+
+Sempre que quisermos modificar os dados administrados por Learning Log, executaremos estes três passos: modificaremos *models.py*, chamaremos **makemigrations** em **learning_logs** e diremos a Django para executar um **migrate** no projeto.
