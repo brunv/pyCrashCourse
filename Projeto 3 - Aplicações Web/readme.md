@@ -172,7 +172,7 @@ datetime.datetime(...)
 Também podemos ver as entradas relacionadas a determinado tópico. Definimos no projeto o atributo **topic** no modelo **Entry**. Esse atributo era uma ForeignKey, isto é, uma conexão entre cada entrada e um tópico. O Django é capaz de usar essa conexão para obter todas as entradas relacionadas a determinado assunto, desta maneira:
 ```
 >>> t.entry_set.all()
-[<Entry: The opening is the first part of the game, roughly...>, <Entry: In the opening phase of the game, it's important to...>]
+[<QuerySet [<Entry: A abertura é a primeira parte do jogo; de modo ger...>, <Entry: Na fase de abertura do jogo, é importante avançar ...>]>]
 ```
 
 Para obter dados por meio de um relacionamento de chave estrangeira, utilize o nome do modelo relacionado com letras minúsculas, seguido de um underscore e da palavra **set**.
