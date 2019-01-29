@@ -108,3 +108,28 @@ $ python manage.py migrate
 ```
 
 Sempre que quisermos modificar os dados administrados por Learning Log, executaremos estes três passos: modificaremos *models.py*, chamaremos **makemigrations** em **learning_logs** e diremos a Django para executar um **migrate** no projeto.
+
+
+## Site de administração de Django
+Ao definir modelos para uma aplicação, o Django fará com que seja mais fácil para você trabalhar com seus modelos por meio do *site de administração*.
+
+### Criando um superusuário
+O Django permite criar um usuário com todos os privilégios disponíveis no site: esse usuário é conhecido como *superusuário*. Um *privilégio* controla as ações que um usuário pode executar.
+
+Para criar um superusuário em Django, execute o comando a seguir e responda aos prompts:
+```
+$ python manage.py createsuperuser
+Username:
+Email adress (optional):
+Password:
+Password (again):
+```
+
+### Registrando um modelo junto ao site de administração
+O Django inclui alguns modelos no site de administração de modo automático, por exemplo, **User** e **Group**, mas os modelos que criamos devem ser registrados manualmente.
+
+Quando iniciamos a aplicação **learning_logs**, o Django criou um arquivo chamado *admin.py* no mesmo diretório em que está *models.py*. Para fazer o registro, importe o arquivo e a classe em *admin.py* e o código:
+```
+admin.site.register(noma_da_classe)
+```
+
