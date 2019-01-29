@@ -91,3 +91,5 @@ O comando **startapp nomeapp** diz a Django para criar a infraestrutura necessá
 
 ### Definindo Modelos
 Um modelo diz a Django como trabalhar com os dados que serão armazenados na aplicação. Do ponto de vista do código, um modelo é apenas uma classe; ele tem atributos métodos, assim como todas as classes que discutimos.
+
+Para ver os diferentes tipos de campos que você pode usar em um modelo, consulte o Django Model Field Reference.
