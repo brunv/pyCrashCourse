@@ -133,3 +133,5 @@ Quando iniciamos a aplicação **learning_logs**, o Django criou um arquivo cham
 admin.site.register(noma_da_classe)
 ```
 
+### Definindo o modelo Entry
+Para o usuário registrar o que aprendeu sobre algum tópico, precisamos definir um modelo para os tipos de entrada que os usuários podem criar em seus registros de aprendizado. Cada entrada deve estar associada a um assunto em particular. Esse relacionamento é chamada de *relacionamento de muitos para um*, o que quer dizer que várias entradas podem estar associadas a um assunto.

@@ -28,3 +28,38 @@ class Topic(models.Model):
 #       Devemos dizer a Django qual atributo deve ser usado como default quando ele
 #       exibir informções sobre um assunto. O Django chama um método __str__() para
 #       exibir uma representação simples de um método.
+
+
+class Entry(models.Model):
+    """Algo específico aprendido sobre um assunto."""
+
+    topic = models.ForeignKey(Topic, on_delete=models.CASCADE)
+    text = models.TextField()
+    date_added = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        verbose_name_plural = 'entries'
+    
+    def __str__(self):
+        """Devolve uma representação em string do modelo."""
+
+        return self.text[:50] + "..."
+
+
+#       O primeiro atributo 'topic', é uma instância de 'ForeignKey'. Uma chave
+#       estrangeira é um termo usado em banco de dados: é um referência a outro
+#       registro do banco de dados. Esse é o código que associa cada entrada a um
+#       assunto específico. Cada assunto recebe um chave, isto é, um ID, quando é
+#       criado. Quando Django precisa estabelecer uma conexão entre dois dados, ele
+#       usa a chave associada a cada informação. O segundo parâmetro 'on_delete' diz
+#       a Django que, quando um tópico for deletado, todas as entradas associadas à
+#       ele também devem ser deletadas. Isso é conhecido como deleção em cascata.
+#
+#       Em seguida, temos um atributo chamado 'text', que é uma instância de
+#       'TextField'. Esse tipo de campo não precisa de um limite para o tamanho.
+#       O atributo 'date_added' nos permite aprensentar as entradas na ordem em que
+#       foram criadas e inserir um timestamp junto a cada entrada.
+#
+#       A classe aninhada 'Meta' armazena informações extras para administrar um
+#       modelo. Nesse caso, sem esse atriuto em especial, Django iria referenciar
+#       várias entradas como Entrys.
