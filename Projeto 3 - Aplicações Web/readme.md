@@ -78,3 +78,16 @@ Se você receber uma mensagem de erro *That port is already in use*, diga a Djan
 ```
 $ python manage.py runserver 8001
 ```
+
+
+## Iniciando uma Aplicação
+Um projeto Django é organizado na forma de um grupo de aplicações individuais que operam em conjunto para fazer o projeto funcionar como um todo. Começaremos criando a aplicação *learning_logs*:
+```
+$ source ll_env/bin/activate
+$ python manage.py startapp learning_logs
+```
+
+O comando **startapp nomeapp** diz a Django para criar a infraestrutura necessária à construção de uma aplicação. Se você observar o diretório de projeto agora verá uma nova pasta chamada *learning_logs*. Dentro dela, os arquivos mais importantes são: *models.py*, *admin.py* e *views.py*. Usaremos *models.py* para definir os dados que queremos administrar em nossa aplicação.
+
+### Definindo Modelos
+Um modelo diz a Django como trabalhar com os dados que serão armazenados na aplicação. Do ponto de vista do código, um modelo é apenas uma classe; ele tem atributos métodos, assim como todas as classes que discutimos.
