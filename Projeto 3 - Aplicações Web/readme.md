@@ -135,3 +135,46 @@ admin.site.register(noma_da_classe)
 
 ### Definindo o modelo Entry
 Para o usuário registrar o que aprendeu sobre algum tópico, precisamos definir um modelo para os tipos de entrada que os usuários podem criar em seus registros de aprendizado. Cada entrada deve estar associada a um assunto em particular. Esse relacionamento é chamada de *relacionamento de muitos para um*, o que quer dizer que várias entradas podem estar associadas a um assunto.
+
+
+## Shell de Django
+Após inserirmos alguns dados, podemos analisá-los por meio de programação em mum sessão interativa de terminal. Esse ambiente interativo é chamado de *shell* do Django, e é um ótimo ambiente para testar e resolver problemas de seu projeto.
+
+Eis um exemplo de uma sessão interativa de shell:
+```
+(ll_env)leraning_logs$ python manage.py shell
+>>> from learning_logs.models import Topic
+>>> Topic.objects.all()
+[<Topic: Chess>, <Topic: Rock Climbing>]
+```
+
+O comando **python manage.py shell** (executado em um ambiente virtual ativo) inicia um interpretador Python que você pode usar para explorar os dados armazenados no banco de dados de seu projeto.
+Usamos o método **Topic.objects.all()** para obter todas as instâncias do modelo **Topic**; a lista devolvida se chama *queryset*.
+Podemos percorrer um queryset do mesmo modo que o fazemos com uma lista:
+```
+>>> topics = Topic.objects.all()
+>>> for topic in topics:
+...     print(topic.id, topic)
+...
+1 Chess
+2 Rock Climbing
+```
+
+Se você souber qual é o ID de um objeto em particular, poderá acessar esse objeto e analisar qualquer atributo que ele tiver:
+```
+>>> t = Topic.objects.get(id=1)
+>>> t.text
+'Chess'
+>>> t.date_added
+datetime.datetime(...)
+```
+
+Também podemos ver as entradas relacionadas a determinado tópico. Definimos no projeto o atributo **topic** no modelo **Entry**. Esse atributo era uma ForeignKey, isto é, uma conexão entre cada entrada e um tópico. O Django é capaz de usar essa conexão para obter todas as entradas relacionadas a determinado assunto, desta maneira:
+```
+>>> t.entry_set.all()
+[<Entry: The opening is the first part of the game, roughly...>, <Entry: In the opening phase of the game, it's important to...>]
+```
+
+Para obter dados por meio de um relacionamento de chave estrangeira, utilize o nome do modelo relacionado com letras minúsculas, seguido de um underscore e da palavra **set**.
+
+Sempre que modificar seus modelos, será necessário reinicar o shell para ver os efeitos dessas alterações. Para sair de um sessão de shell, tecle CTRL-D; no Windows, tecle CTRL-Z e depois ENTER.
