@@ -189,3 +189,7 @@ Cada URL então é mapeado para uma *view* em particular - a função de view ob
 
 ### Mapeando um URL
 No momento, o URL base, *http://localhost:8000/*, devolve o site default de Django. Mudaremos isso mapeando o URL base para página inicial de Learning Log. Na pasta principal do projeto *learning_log*, abra o arquivo *urls.py*. Em seguida, precisamos criar um segundo arquivo *urls.py* na pasta *learning_logs*.
+
+### Escrevendo uma view
+Uma função de view recebe informações de uma requisição, prepara os dados necesários para gerar uma página e então envia os dados de volta ao navegador, geralmente usando um template que define a aparência da página.
+O arquivo *views.py* foi gerado automaticamente quando executamos o comando **startapp**.
