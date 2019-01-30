@@ -203,3 +203,6 @@ Quando criar um site, quase sempre você precisará de alguns elementos que se r
 Começaremos criando um template chamado *base.html* no mesmo diretório em que está *index.html*. Esse arquivo conterá elementos comuns a todas as páginas; todos os demais templates herdarão de *base.html*. Feito isso, precisaremos reescrever os templates para que herdem de *base.html*.
 
 Em um projeto grande, é comum ter um template-pai chamado *base.html* para todo o site e templates-pai para cada seção principal do site. Todos os templates de seção herdam de *base.html*, e toda página do site herda de um template se seção.
+
+### Padrão de URL para um assunto
+O padrão de URL para a página de um assunto é um pouco diferente dos demais padrões que vimos até agora porque ele usará o atributo **id** do assunto a fim de informar qual é o assunto solicitado. Por exemplo, se o usuário quiser ver a página de detalhes do assunto Chess, cujo **id** é 1, o URL será http://localhost:8000/topics/1/. Esse padrão será incluído em *learning_logs/urls.py*.

@@ -1,0 +1,29 @@
+{% extends "learning_logs/base.html" %}
+
+{% block content %}
+
+<h3>Topic: {{ topic }}</h3>
+
+<h4>Entries:</h4>
+<ul>
+    {% for entry in entries %}
+        <li>
+            <p>{{ entry.date_added|date:'M d, Y H:i' }}</p>
+            <p>{{ entry.text|linebreaks }}</p>
+        </li>
+    {% empty %}
+        <li>There are no entries for this topic yet.</li>
+    {% endfor %}
+</ul>
+
+{% endblock content %}
+
+
+<!-- 
+    Para o timestamp, exibimos o valor do atributo 'date_added'. Nos templates de
+    Django, uma linha vertical (|) representa um 'filtro de template' - uma função
+    que modifica o valor de uma variável de template. O filtro 'date:' exibe
+    timestamps no formato 'January 1, 2015 23:00'. A próxima linha exibe o valor
+    completo de 'text'. O filtro 'linebreaks' garante que entradas com texto longo
+    incluam quebras de linha em um formato compreensível pelos navegadores.
+-->

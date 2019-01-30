@@ -11,6 +11,9 @@ urlpatterns = [
 
     # Mostra todos os assuntos
     path('topics/', views.topics, name='topics'),
+
+    # Página de detalhes para um único assunto
+    path('topics/<int:topic_id>/', views.topic, name='topic')
 ]
 
 #       No Django 2.0, o 'namesapce' do app é definido pela variável 'app_name' e
@@ -32,3 +35,6 @@ urlpatterns = [
 #
 #       Qualquer requisição com um URL que corresponda a esse padrão será então
 #       passada para a função 'topics()' em 'views.py'.
+#
+#       Dentro do colchete angular (<>) devemos descrever o tipo de variável
+#       esperada e providenciar um nome para o valor no URL.
