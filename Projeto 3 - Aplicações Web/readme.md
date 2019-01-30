@@ -2,6 +2,8 @@
 
 Essa seção destina-se ao desenvolvimento do terceiro projeto do livro Curso Intensivo de Python (Python Crash Course) por Eric Matthes.
 
+> Atenção, isto não é a descrição do projeto! É o resumo do livro feito durante os estudos!
+
 ## Introdução ao Django
 O Django é um framework web - um conjunto de ferramentas projetado para ajudar você a criar sites interativos. Esse framework é capaz de responder a requisições de páginas e facilitar let e escrever em um banco de dados, administrar usuários e outras tarefas.
 
@@ -178,3 +180,12 @@ Também podemos ver as entradas relacionadas a determinado tópico. Definimos no
 Para obter dados por meio de um relacionamento de chave estrangeira, utilize o nome do modelo relacionado com letras minúsculas, seguido de um underscore e da palavra **set**.
 
 Sempre que modificar seus modelos, será necessário reinicar o shell para ver os efeitos dessas alterações. Para sair de um sessão de shell, tecle CTRL-D; no Windows, tecle CTRL-Z e depois ENTER.
+
+
+## Criando Páginas
+Geralmente a criação de páginas web com Django é constituída de três etapas: definir os URLs, escrever as views e criar os templates. Em primeiro lugar, você deve definir padrões para os URLs. Um padrão de URL descreve o modo como o URL é organizado, e diz a Django o que ele deve procurar quando fizer a correspondência entre um requisição do navegador e o URL de um site para que ele possa saber qua página deverá devolver.
+
+Cada URL então é mapeado para uma *view* em particular - a função de view obtém e processa os dados necessários a essa página. Essa função geralmente chama um *template*, que constrói uma página possível de ser lida por um navegador.
+
+### Mapeando um URL
+No momento, o URL base, *http://localhost:8000/*, devolve o site default de Django. Mudaremos isso mapeando o URL base para página inicial de Learning Log. Na pasta principal do projeto *learning_log*, abra o arquivo *urls.py*. Em seguida, precisamos criar um segundo arquivo *urls.py* na pasta *learning_logs*.

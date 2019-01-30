@@ -18,4 +18,11 @@ from django.urls import path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', include('learning_logs.urls'));
 ]
+
+
+#       Nesse arquivo 'urls.py', que representa o projeto como um todo, a varável
+#       'urlpatterns' inclui os conjuntos de URLs das aplicações do projeto.
+#       O código 'admin.site.urls' define todos os URLs que podem ser requisitados
+#       a partir do site de administração.
