@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Learning Logs - Django</title>
+</head>
+<body>
+    
+        <h1><a href="{% url 'learning_logs:index' %}">Learning Log</a></h1>
+
+        {% block content %}{% endblock content %}        
+</body>
+</html>
+
+<!-- 
+    A primeira parte desse arquivo cria um título h1 contendo o nome do projeto,
+    que também atua como um link para a página inicial. Para gerar um link, usamos
+    uma 'tag de template', representada por chaves os sinais de porcentagem. Uma
+    tag de template é uma porção de código que gera informações a serem exibidas em
+    uma página. Nessa caso, 'learning_logs' é o 'namespace' e 'index' é um padrão
+    de URL de nome único nesse namespace.
+
+    Em seguida inserimos um par de tags 'block'. Esse bloco, que se chama 'content',
+    é um placeholder; o template-filho definirá o tipo de informação que deverá ser
+    inserido nesse bloco.
+    Um template-filho não precisa definir todo os blocos de seu pai, portante você
+    pode reservar espaço nos templates-pai para quantos blocos quiser, e o template
+    -filho usurá apenas quantos forem necessários.
+-->

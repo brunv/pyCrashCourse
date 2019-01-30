@@ -196,3 +196,11 @@ O arquivo *views.py* foi gerado automaticamente quando executamos o comando **st
 
 ### Escrevendo um template
 Um template define a estrutura de uma página web. Ele permite acessar qualquer dado oferecido pela view. Na pasta *learning_logs*, crie uma nova pasta chamada *templates*. Nessa pasta, crie outra pasta chamda *learning_logs*. Na pasta *learning_logs* interna, crie um novo arquivo de nome *index.html*.
+
+
+## Herança de templates
+Quando criar um site, quase sempre você precisará de alguns elementos que se repetirão em todas as páginas. Em vez de escrever esses elementos diretamente em cada página, você poderá criar um template base que contenha os elementos repetidos e então fazer cada página herdar esse template. Essa abordagem permite que o enfoque seja dado no desenvolvimento dos aspectos exclusivos de cada página e facilita bastante alterar a aparência do projeto como um todo.
+
+Começaremos criando um template chamado *base.html* no mesmo diretório em que está *index.html*. Esse arquivo conterá elementos comuns a todas as páginas; todos os demais templates herdarão de *base.html*. Feito isso, precisaremos reescrever os templates para que herdem de *base.html*.
+
+Em um projeto grande, é comum ter um template-pai chamado *base.html* para todo o site e templates-pai para cada seção principal do site. Todos os templates de seção herdam de *base.html*, e toda página do site herda de um template se seção.

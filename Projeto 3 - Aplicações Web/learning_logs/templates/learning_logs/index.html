@@ -1,16 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Learning Django</title>
-</head>
-<body>
-    
-    <h1>Learning Logs</h1>
+{% extends "learning_logs/base.html" %}
 
-    <h3>Learning Log hels you keep track of your learning, for any topic you're learning about. </h3>
+{% block content %}
+<h3>Learning Log hels you keep track of your learning, for any topic you're learning about. </h3>
+{% endblock content %}
 
-</body>
-</html>
+
+<!-- 
+    Um template-filho deve ter uma tag 'extends' na primeira linha para dizer
+    a Django de qual template-pai ele deve herdar.
+    Essa linha extrai tudo que está contido no template 'base.html' e permite que
+    'index.html' defina o que deve ser colocado no espaço reservado pelo bloco
+    'content'.
+
+    Tudo o que não herdamos do template-pai será colocado em um bloco 'content'.
+-->
