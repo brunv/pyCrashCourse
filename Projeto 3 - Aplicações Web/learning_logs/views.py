@@ -22,7 +22,7 @@ def topics(request):
     topics = Topic.objects.order_by('date_added')
     context = {'topics': topics}
 
-    return render(request, 'learning-Logs/topics.html', context)
+    return render(request, 'learning_logs/topics.html', context)
 
 
 #       Inicialmente importamos o modelo associado aos dados de que precisamos.
