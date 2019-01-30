@@ -7,7 +7,10 @@ app_name = 'learning_logs'
 
 urlpatterns = [
     # Home page
-    path('', views.index, name='index')
+    path('', views.index, name='index'),
+
+    # Mostra todos os assuntos
+    path('topics/', views.topics, name='topics'),
 ]
 
 #       No Django 2.0, o 'namesapce' do app é definido pela variável 'app_name' e
@@ -26,3 +29,6 @@ urlpatterns = [
 #       O segundo argumento espcifica qual função da view deve ser chamada.
 #       O terceiro argumento fornece o nome 'index' para esse padrão URL para que
 #       possamos referenciá-lo em outras seções do código.
+#
+#       Qualquer requisição com um URL que corresponda a esse padrão será então
+#       passada para a função 'topics()' em 'views.py'.

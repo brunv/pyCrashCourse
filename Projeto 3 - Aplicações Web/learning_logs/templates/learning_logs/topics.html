@@ -1,0 +1,30 @@
+{% extends "learning_logs/base.html" %}
+
+{% block content %}
+
+<h3>Topics:</h3>
+
+<ul>
+    {% for topic in topics %}
+        <li>{{ topic }}</li>
+    {% empty %}
+        <li>No topics have been added yet.</li>
+    {% endfor %}
+</ul>
+
+{% endblock content %}
+
+
+<!-- 
+    Dentro de <ul> temo outra tag de template equivalente a um laço 'for', que
+    percorre a lista 'topics' do dicionário 'context'. O código usado nos templates
+    difere de Python em alguns aspectos importantes. Python utiliza indentação para
+    indicar quais linhas de uma instrução 'for' fazem parte de um laço. Em um 
+    template, tod laço 'for' deve ter uma tag 'endfor' explicita para indicar em
+    que ponto o laço termina.
+
+    Para exibir a variável de um template, coloco que o nome dela entre chaves
+    duplas.
+    A tag de template 'empty' diz a Django o que deve ser feito se não houver
+    nenhum item na lista.
+-->
