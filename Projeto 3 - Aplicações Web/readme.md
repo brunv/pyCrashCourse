@@ -193,3 +193,6 @@ No momento, o URL base, *http://localhost:8000/*, devolve o site default de Djan
 ### Escrevendo uma view
 Uma função de view recebe informações de uma requisição, prepara os dados necesários para gerar uma página e então envia os dados de volta ao navegador, geralmente usando um template que define a aparência da página.
 O arquivo *views.py* foi gerado automaticamente quando executamos o comando **startapp**.
+
+### Escrevendo um template
+Um template define a estrutura de uma página web. Ele permite acessar qualquer dado oferecido pela view. Na pasta *learning_logs*, crie uma nova pasta chamada *templates*. Nessa pasta, crie outra pasta chamda *learning_logs*. Na pasta *learning_logs* interna, crie um novo arquivo de nome *index.html*.
