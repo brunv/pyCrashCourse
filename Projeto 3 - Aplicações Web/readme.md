@@ -236,3 +236,6 @@ Django facilita restringir o acesso a determinadas páginas aos usuários logado
 O código em **login_required** verifica se um usuário está logado, e Django executará o código em seguida somente em caso afirmativo. Se não estiver logado, o usuário será redirecionado para a página de login.
 
 Para fazer esse redirecionamento funcionar, devemos modificar **settings.py** para que Django saiba em que local pode encontrar página de login.
+
+### Associando dados a determinados usuários
+Deve associar somente dados de nível mais alto da hierarquia a um usuário; os dados de nível mais baixo acompanharão a associação. Por exemplo, em Learning Log, os assuntos estão no nível mais alto da aplicação, e todas as entradas estão associadas a um assunto. Desde que cada assunto pertença a um usuário específico, seremos capazed de identificar o dono de cada entrada no banco de dados.
