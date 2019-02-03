@@ -22,7 +22,7 @@ urlpatterns = [
     path('new_entry/<int:topic_id>/', views.new_entry, name='new_entry'),
 
     # Página para editar uma entrada
-    path('edit_entry/<int:entry_id>/', view.edit_entry, name='edit_entry')
+    path('edit_entry/<int:entry_id>/', views.edit_entry, name='edit_entry')
 ]
 
 #       No Django 2.0, o 'namesapce' do app é definido pela variável 'app_name' e
