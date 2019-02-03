@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, Http404
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 
@@ -25,7 +25,7 @@ def index(request):
 def topics(request):
     """Mostra todos os assuntos."""
 
-    topics = Topic.objects.order_by('date_added')
+    topics = Topic.objects.filter(owner=request.user).order_by('date_added')
     context = {'topics': topics}
 
     return render(request, 'learning_logs/topics.html', context)
@@ -34,7 +34,8 @@ def topics(request):
 #       Inicialmente importamos o modelo associado aos dados de que precisamos.
 #       A função 'topics()' exige um parâmetro: o objeto 'request' que Django
 #       recebeu do servidor. Em seguida, consultamos o banco de dados pedindo os
-#       objetos 'Topic', ordenados de acordo com o atributo 'date_added'.
+#       objetos 'Topic', ordenados de acordo com o atributo 'date_added' e 
+#       pertecentes ao usuário que requisitou os tópicos..
 #
 #       Na sequência definimos um contexto que será enviado ao template. Um
 #       contexto é um dicionário em que as chaves são os nomes que usaremos no
@@ -50,6 +51,11 @@ def topic(request, topic_id):
     """Mostra um único assunto e todas as suas entradas."""
 
     topic = Topic.objects.get(id=topic_id)
+
+    # Garante que o assunto pertence ao usuário atual
+    if topic.owner != request.user:
+        raise Http404
+
     entries = topic.entry_set.order_by('-date_added')
     context = {'topic': topic, 'entries': entries}
 
@@ -159,6 +165,8 @@ def edit_entry(request, entry_id):
 
     entry = Entry.objects.get(id=entry_id)
     topic = entry.topic
+    if topic.owner != request.user:
+        raise Http404
 
     if request.method != 'POST':
         # Requisição inicial; preenche previamente o formulário com a entrada atual
