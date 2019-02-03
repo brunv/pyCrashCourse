@@ -15,3 +15,15 @@
 </form>
 
 {% endblock content %}
+
+<!-- 
+    Observe que um template em uma aplicação é capaz de estender um template de
+    outra aplicação.
+    
+    Se o atriuto 'errors' do formulário estiver definido, exibiremos uma mensagem
+    de erro.
+
+    Incluímos um elemento oculto no formulário, 'next'; o argumento 'value' diz a
+    Django para onde o usuário deve ser redirecionado depois que tiver feito login
+    com sucesso.
+-->
