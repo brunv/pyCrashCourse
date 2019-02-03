@@ -31,6 +31,4 @@ urlpatterns = [
 #       O segundo path corresponderá a qualquer URL que comece com a palavra
 #       'users'. Assim como o terceiro path que corresponde à raiz com '' no URL.
 #
-#       Os namespaces são criados automaticamente durante o 'include()'. Assim,
-#       podemos distinguir os URLs pertencentes à aplicação 'learning_logs' ou
-#       'users'.
+#       Os namespaces são criados com 'app_name' em 'urls.py' de cada aplicação.
