@@ -28,7 +28,7 @@ Para ativá-lo, use o seguinte comando:
 ```
 $ source ll_env/bin/activate
 or (Windows)
-$ ll_env/Source/activate
+$ ll_env/Scripts/activate
 ```
 
 Esse comando executa o script *activate* em *ll_env/bin*. Quando o ambiente estiver ativo, você verá o nome dele entre parênteses; então você poderá instalar pacotes no ambiente e usar pacotes que já tenham sido instalados. os pacotes que você instalar em *ll_env* estão disponíveis somente enquanto o ambiente estiver ativo.
