@@ -18,6 +18,7 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('users/', include('users.urls')),
     path('', include('learning_logs.urls'))
 ]
 
@@ -26,3 +27,10 @@ urlpatterns = [
 #       'urlpatterns' inclui os conjuntos de URLs das aplicações do projeto.
 #       O código 'admin.site.urls' define todos os URLs que podem ser requisitados
 #       a partir do site de administração.
+#
+#       O segundo path corresponderá a qualquer URL que comece com a palavra
+#       'users'. Assim como o terceiro path que corresponde à raiz com '' no URL.
+#
+#       Os namespaces são criados automaticamente durante o 'include()'. Assim,
+#       podemos distinguir os URLs pertencentes à aplicação 'learning_logs' ou
+#       'users'.

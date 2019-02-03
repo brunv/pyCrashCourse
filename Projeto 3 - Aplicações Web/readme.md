@@ -226,3 +226,6 @@ Esse comando cria um novo diretório chamado *users*, com um estrutura idêntica
 
 ### Adicionando users em settings.py
 É necessário adicionar nossa nova aplicação em **INSTALLED_APPS**, no arquivo *settings.py*. Assim, Django incluirá a aplicação **users** no projeto como um todo.
+
+### Incluindo URLs de users
+Em seguida precisamos modificar o *urls.py* raiz para que inclua os URLs que utilizaremos na aplicação users.
