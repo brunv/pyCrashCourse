@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 
-from .models import Topic
+from .models import Topic, Entry
 from .forms import TopicForm, EntryForm
 
 # Create your views here.
@@ -146,3 +146,31 @@ def new_entry(request, topic_id):
 #       que deva ser incluído no URL. A lista 'args' contém um item: 'topic_id'. A
 #       chamada a 'HttpResponseRedirect()' então redireciona o usuário para a
 #       página do assunto para o qual uma entrada foi criada.
+
+
+def edit_entry(request, entry_id):
+    """Edita uma entrada existente."""
+
+    entry = Entry.objects.get(id=entry_id)
+    topic = entry.topic
+
+    if request.method != 'POST':
+        # Requisição inicial; preenche previamente o formulário com a entrada atual
+        form = EntryForm(instance=entry)
+    else:
+        # Dados de POST submetidos; processa os dados
+        form = EntryForm(instance=entry, data=request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('learning_logs:topic',
+                                                args=[topic.id]))
+    
+    context = {'entry': entry, 'topic': topic, 'form': form}
+    return render(request, 'learning_logs/edit_entry.html', context)
+
+
+#       Ao processador uma requisição POST, passamos os argumentos 'instance=entry'
+#       e 'data=request.POST' para dizer a Django que crie uma instância de
+#       formulário com qualquer dado relevante de 'request.POST'.
+#       Em seguida redirecionamos o usuário para a página 'topic', na qual ele
+#       deverá ver a versão atualizada da entrada editada.
