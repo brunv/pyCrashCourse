@@ -1,0 +1,23 @@
+{% extends "learning_logs/base.html" %}
+
+{% block content %}
+<h3> Add a new Topic:</h3>
+
+<form action="{% url 'learning_logs:new_topic' %}" method="POST">
+    {% csrf_token %}
+    {{ form.as_p}}
+    <button type="submit">Add Topic</button>
+</form>
+
+{% endblock content %}
+
+<!-- 
+    Django utiliza a tag de template 'srf_token' para evitar que invasores usem o
+    formulário a fim de ter acesso não autorizado ao servidor (esse tipo de ataque
+    é conhecido como Cross-site Request Forgery).
+    Em seguida exibimos o formulário; o modificador 'as_p' diz a Django para
+    renderizar todos os elementos do formulário em formato de parágrafo, que é uma
+    maneira simples de exibit um formulário de modo organizado.
+    O Django não cria um botão de submissão para os formulários, portanto devemos
+    criar um.
+-->
