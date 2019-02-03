@@ -117,7 +117,7 @@ def new_topic(request):
 def new_entry(request, topic_id):
     """Acrescenta uma nova entrada para um assunto em particular."""
 
-    topic = Topic.ojects.get(id=topic_id)
+    topic = Topic.objects.get(id=topic_id)
     if request.method != 'POST':
         # Nenhum dado submetido; cria um formulário em branco
         form = EntryForm()
