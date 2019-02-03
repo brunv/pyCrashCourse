@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 
 from .models import Topic
-from .forms import TopicForm
+from .forms import TopicForm, EntryForm
 
 # Create your views here.
 def index(request):
@@ -112,3 +112,37 @@ def new_topic(request):
 #       e se os dados fornecidos são do tipo esperado para o campo.
 #       Se tiver estiver válido, chamamos 'save()', que grava os dados no banco de
 #       dados.
+
+
+def new_entry(request, topic_id):
+    """Acrescenta uma nova entrada para um assunto em particular."""
+
+    topic = Topic.ojects.get(id=topic_id)
+    if request.method != 'POST':
+        # Nenhum dado submetido; cria um formulário em branco
+        form = EntryForm()
+    else:
+        # Dados de POST submetidos; processa os dados
+        form = EntryForm(data=request.POST)
+        if form.is_valid():
+            new_entry = form.save(commit=False)
+            new_entry.topic = topic
+            new_entry.save()
+            return HttpResponseRedirect(reverse('learning_logs:topic',
+                                            args=[topic_id]))
+    
+    context = {'topic': topic, 'form': form}
+    return render(request, 'learning_logs/new_entry.html', context)
+
+
+#       Quando chamamos 'save()', incluímos o argumento 'commit=False' para dizer a
+#       Django que crie um novo objeto de entrada e o armazene em 'new_entry' sem
+#       salvá-lo no banco de dados por enquanto. Definimos o atributo 'topic' de
+#       'new_entry' com o assunto extraído do anco de dados no início da função;
+#       então chamamos 'save()'.
+#
+#       A chamada a 'reverse()' exige dois argumentos: o nome do padrão de URL para
+#       o qual queremos gerar um UL e uma lista 'args' contendo qualquer argumento
+#       que deva ser incluído no URL. A lista 'args' contém um item: 'topic_id'. A
+#       chamada a 'HttpResponseRedirect()' então redireciona o usuário para a
+#       página do assunto para o qual uma entrada foi criada.
