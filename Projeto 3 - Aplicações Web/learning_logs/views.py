@@ -92,3 +92,21 @@ def new_topic(request):
 #       leitor de volta à pagina 'topics', depois que tiver submetido seu assunto.
 #       A função 'reverse()' determina o URL a partir de um padrão de URL nomeado,
 #       o que quer dizer que Django gerará o URL quando a página for solicitada.
+#
+#       A função acima aceita o objeto de requisição como parâmetro. Quando o
+#       usuário inicialmente solicita essa página, o navegador envia uma requisição
+#       GET. Depois que o usuário tiver preenchido e submetido o formulário, o
+#       navegador enviará uma requisição POST.
+#
+#       Portanto, se o método de requisição não for POST, precisamos devolver um
+#       formulário em branco (se for outro tipo de requisição, continua sendo
+#       seguro devolver um formulário em branco). Se for POST, criamos uma
+#       instância de 'TopicForm' e passamos os dados fornecidos pelo usuário,
+#       armazenados em 'request.POST'. O objeto 'form' devolvido contém as
+#       informações submetidas pelo usuário.
+#
+#       A função 'is_valid()' verifica se todos os campos necessários foram
+#       preenchidos (todos os campos em um formulário são obrigatórios por padrão)
+#       e se os dados fornecidos são do tipo esperado para o campo.
+#       Se tiver estiver válido, chamamos 'save()', que grava os dados no banco de
+#       dados.

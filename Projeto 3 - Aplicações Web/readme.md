@@ -206,3 +206,7 @@ Em um projeto grande, é comum ter um template-pai chamado *base.html* para todo
 
 ### Padrão de URL para um assunto
 O padrão de URL para a página de um assunto é um pouco diferente dos demais padrões que vimos até agora porque ele usará o atributo **id** do assunto a fim de informar qual é o assunto solicitado. Por exemplo, se o usuário quiser ver a página de detalhes do assunto Chess, cujo **id** é 1, o URL será http://localhost:8000/topics/1/. Esse padrão será incluído em *learning_logs/urls.py*.
+
+
+### Métodos GET e POST
+OS dois tipos principais de requisição que você usará ao criar aplicações web são as requisições GET e POST. Usamos requisições GET para páginas que apenas leem dados do servidor. Geralmente usamos requisições POST quando o usuário precisa submeter informações por meio de um formulário.
