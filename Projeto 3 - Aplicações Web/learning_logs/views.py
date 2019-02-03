@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from django.contrib.auth.decorators import login_required
 
 from .models import Topic, Entry
 from .forms import TopicForm, EntryForm
@@ -20,6 +21,7 @@ def index(request):
 #       um template que pode ser usado para construir a página.
 
 
+@login_required
 def topics(request):
     """Mostra todos os assuntos."""
 
@@ -43,6 +45,7 @@ def topics(request):
 #       'render()', além do objeto 'request' e o path do template.
 
 
+@login_required
 def topic(request, topic_id):
     """Mostra um único assunto e todas as suas entradas."""
 
@@ -69,6 +72,7 @@ def topic(request, topic_id):
 #       antes no shell de Django.
 
 
+@login_required
 def new_topic(request):
     """Adiciona um novo assunto."""
 
@@ -114,6 +118,7 @@ def new_topic(request):
 #       dados.
 
 
+@login_required
 def new_entry(request, topic_id):
     """Acrescenta uma nova entrada para um assunto em particular."""
 
@@ -148,6 +153,7 @@ def new_entry(request, topic_id):
 #       página do assunto para o qual uma entrada foi criada.
 
 
+@login_required
 def edit_entry(request, entry_id):
     """Edita uma entrada existente."""
 

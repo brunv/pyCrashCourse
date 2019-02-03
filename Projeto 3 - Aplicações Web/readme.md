@@ -229,3 +229,10 @@ Esse comando cria um novo diretório chamado *users*, com um estrutura idêntica
 
 ### Incluindo URLs de users
 Em seguida precisamos modificar o *urls.py* raiz para que inclua os URLs que utilizaremos na aplicação users.
+
+### Restringindo acesso com @login_required
+Django facilita restringir o acesso a determinadas páginas aos usuários logados por meio do decorador **@login_required**. Um *decorador* é uma diretiva colocada imediatamente antes da definição de uma função, que Python aplica a ela antes que seja executada a fim de alterar o modo como essa função se comporta.
+
+O código em **login_required** verifica se um usuário está logado, e Django executará o código em seguida somente em caso afirmativo. Se não estiver logado, o usuário será redirecionado para a página de login.
+
+Para fazer esse redirecionamento funcionar, devemos modificar **settings.py** para que Django saiba em que local pode encontrar página de login.

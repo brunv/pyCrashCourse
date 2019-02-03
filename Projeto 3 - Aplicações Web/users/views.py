@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth import login, authenticate
-from django.contrib.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm
 
 
 def register(request):
@@ -25,7 +25,7 @@ def register(request):
             return HttpResponseRedirect(reverse('learning_logs:index'))
     
     context = {'form': form}
-    return render(request, 'users/register/html', context)
+    return render(request, 'users/register.html', context)
 
 
 #       Se os dados submetido forem válidos, chamamos o método 'save()' do
