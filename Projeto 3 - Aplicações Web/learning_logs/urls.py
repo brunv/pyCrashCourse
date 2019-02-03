@@ -13,7 +13,10 @@ urlpatterns = [
     path('topics/', views.topics, name='topics'),
 
     # Página de detalhes para um único assunto
-    path('topics/<int:topic_id>/', views.topic, name='topic')
+    path('topics/<int:topic_id>/', views.topic, name='topic'),
+
+    # Página para adicionar um novo assunto
+    path('new_topic/', views.new_topic, name='new_topic'),
 ]
 
 #       No Django 2.0, o 'namesapce' do app é definido pela variável 'app_name' e

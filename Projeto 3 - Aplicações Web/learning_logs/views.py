@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from .models import Topic
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 
 # Create your views here.
 def index(request):
@@ -63,3 +65,30 @@ def topic(request, topic_id):
 #       banco de dados em busca de informações específicas. Ao executar queries
 #       como essas em seus próprios projetos, será bem conveniente testá-las
 #       antes no shell de Django.
+
+
+def new_topic(request):
+    """Adiciona um novo assunto."""
+
+    if request.method != 'POST':
+        # Nenhuma dado submetido; cria um formulário em branco
+        form = TopicForm()
+    else:
+        # Dados de POST submetidos; processa os dados
+        form = TopicForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('learning_logs:topics'))
+            
+    context = {'form': form}
+    return render(request, 'learning_logs/new_topic.html'. context)
+
+
+#       A função 'new_topic()' deve tratar duas situações diferentes: requisições
+#       iniciais para a página 'new_topic' e o processamento de qualquer dado
+#       submetido no formulário.
+#
+#       Importamos a classe HttpResponseRedirect, que usamos para redirecionar o
+#       leitor de volta à pagina 'topics', depois que tiver submetido seu assunto.
+#       A função 'reverse()' determina o URL a partir de um padrão de URL nomeado,
+#       o que quer dizer que Django gerará o URL quando a página for solicitada.
