@@ -5,7 +5,7 @@ class TopicForm(forms.ModelForm):
     class Meta:
         model = Topic
         fields = ['text']
-        labels {'text': ''}
+        labels = {'text': ''}
 
 
 #       Inicialmente importamos o módulos 'forms' e os modelos com os quais

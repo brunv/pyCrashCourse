@@ -1,7 +1,9 @@
 from django.shortcuts import render
-from .models import Topic
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+
+from .models import Topic
+from .forms import TopicForm
 
 # Create your views here.
 def index(request):
@@ -81,7 +83,7 @@ def new_topic(request):
             return HttpResponseRedirect(reverse('learning_logs:topics'))
             
     context = {'form': form}
-    return render(request, 'learning_logs/new_topic.html'. context)
+    return render(request, 'learning_logs/new_topic.html', context)
 
 
 #       A função 'new_topic()' deve tratar duas situações diferentes: requisições
