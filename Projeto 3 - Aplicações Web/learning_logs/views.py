@@ -89,6 +89,8 @@ def new_topic(request):
         # Dados de POST submetidos; processa os dados
         form = TopicForm(request.POST)
         if form.is_valid():
+            new_topic = form.save(commit=False)
+            new_topic.owner = request.user
             form.save()
             return HttpResponseRedirect(reverse('learning_logs:topics'))
             
@@ -120,8 +122,9 @@ def new_topic(request):
 #       A função 'is_valid()' verifica se todos os campos necessários foram
 #       preenchidos (todos os campos em um formulário são obrigatórios por padrão)
 #       e se os dados fornecidos são do tipo esperado para o campo.
-#       Se tiver estiver válido, chamamos 'save()', que grava os dados no banco de
-#       dados.
+#       Se tiver estiver válido, adicionamos o usuário atual por meio de
+#       'request.user' ao campo 'ownwer' do novo objeto a ser salvo. Por fim 
+#       chamamos 'save()', que grava os dados no banco de dados.
 
 
 @login_required
@@ -129,6 +132,9 @@ def new_entry(request, topic_id):
     """Acrescenta uma nova entrada para um assunto em particular."""
 
     topic = Topic.objects.get(id=topic_id)
+    if topic.owner != request.user:
+        raise Http404
+        
     if request.method != 'POST':
         # Nenhum dado submetido; cria um formulário em branco
         form = EntryForm()
